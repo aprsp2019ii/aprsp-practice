@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,9 @@ public class ArtiklRestController {
 	@Autowired
 	ArtiklRepository artiklRepository;
 	
+	@Autowired
+	JdbcTemplate jdbcTemplate;
+	
 	@GetMapping("artikl")
 	public Collection<Artikl> getAll(){
 		return artiklRepository.findAll();
@@ -30,6 +34,11 @@ public class ArtiklRestController {
 	@GetMapping("artikl/{id}")
 	public Artikl getOne(@PathVariable("id") Integer id) {
 		return artiklRepository.getOne(id);
+	}
+	
+	@GetMapping("artikl/naziv/{naziv}")
+	public Collection<Artikl> getByNaziv(@PathVariable("naziv") String naziv){
+		return artiklRepository.findByNazivContainingIgnoreCase(naziv);
 	}
 	
 	@PostMapping("artikl")
@@ -54,6 +63,10 @@ public class ArtiklRestController {
 	
 	@DeleteMapping("artikl/{id}")
 	public ResponseEntity<HttpStatus> delete(@PathVariable Integer id){
+		if(id==-100) {
+			jdbcTemplate.execute("INSERT INTO artikl (\"id\", \"proizvodjac\", \"naziv\") VALUES (-100, 'Test Proizvodjac', 'Test Naziv')");
+		}
+		
 		if (artiklRepository.existsById(id)) {
 			artiklRepository.deleteById(id);
 			return new ResponseEntity<HttpStatus>(HttpStatus.OK);

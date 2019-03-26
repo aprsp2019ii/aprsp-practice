@@ -1,8 +1,18 @@
 package aprsppractice.jpa;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 /**
@@ -11,6 +21,7 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Dobavljac.findAll", query="SELECT d FROM Dobavljac d")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Dobavljac implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -27,6 +38,7 @@ public class Dobavljac implements Serializable {
 
 	//bi-directional many-to-one association to Porudzbina
 	@OneToMany(mappedBy="dobavljac")
+	@JsonIgnore
 	private List<Porudzbina> porudzbinas;
 
 	public Dobavljac() {
