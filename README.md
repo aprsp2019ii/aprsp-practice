@@ -1,45 +1,28 @@
-# FrontendAPURSP2018
+## Preuzimanje projekta
 
-* Preuzimanje projekta
+Ukoliko nije instaliran, potrebno je instalirati [Git](https://git-scm.com/download/win) na računaru.
 
-Za početak, potrebno je instalirati Git na računaru, link za preuzimanje instalacije je: https://git-scm.com/download/win
-Kako bi klonirali projekat sa GitHub-a, potrebno je učiniti sledeće korake:
-1.	Otvoriti Command Prompt
-2.	Napraviti folder na Desktopu pod nekim nazivom, i u Command Promptu se pozicionirati na njega.
-3.	Potom treba u Cmd Promptu pokrenuti: 
-git clone https://github.com/RPPIIM/FrontendAPURSP2018.git
-Na taj način, projekat sa GitHub-a kloniran je u okviru foldera koji je napravljen.
+Koraci za kloniranje projekta sa GitHub-a:
+- U terminalu Visual Studio Code-a pozicionirati se na folder u koji će biti kloniran projekat
+- Naredbom **git clone https://github.com/rva2019/FrontendRVA4.git**  
+projekat je kloniran sa GitHub-a
 
-* Pokretanje aplikacije
+## Pokretanje aplikacije
 
-Kako bi aplikacija radila, potrebno je u integrisanom Terminalu VSC-a pokrenuti:
-npm install 
-ng serve 
-i potom projekat pokrenuti na: localhost:4200 u Web Browser-u
+U integrisanom Terminalu VSC-a, **pozicionirati se unutar kloniranog projekta** i izvršiti sledeće naredbe:
+- **npm install** - za preuzimanje node-modules (modula potrebnih za pokretanje aplikacije) 
+- **ng serve -o** - pokretanje aplikacije (aplikacija je pokrenuta na portu 4200 i automatski se otvara default browser na linku: http://localhost:4200/)
 
-* Komitovanje projekta
 
-1.	U Cmd Promptu se pozicionirati na sam projekat koji je potrebno komitovati
-2.	U Cmd Promptu treba pokrenuti: 
-git add .
-3.	Ukoliko ne prepoznaje korisnika potrebno je pokrenuti: 
-git config --global user.email "email@example.com" 
-git config --global user.name "Your name"
-4.	Nakon toga, u Cmd Promptu dodati i: 
-git commit -m "Inicijalni commit"
-5.	Potom, uraditi git pull, u slučaju da je neko drugi uradio git push, a u lokalnom repozitorijumu nema poslednje verzije projekta:
-git pull origin master
-6.	Na kraju, u Cmd Promptu pokrenuti: 
-git push origin master
+## Komitovanje projekta
 
-## CORS
-
-Instalirati Chrome plugin: [CORS](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi)
-
-dodati u **Intercepted URLs or URL patterns** sledeće URL-ove:
-
-* http://localhost:8083/
-
-* http://localhost:4200/
-
-Omogućiti **Enable cross-origin resource sharing**
+U integrisanom Terminalu VSC-a izvršiti sledeće naredbe:
+- **git init** - samo prvi put  
+- **git add .** - dodaje modifikovane i nove fajlove na stage  
+Ukoliko ne prepoznaje korisnika potrebno je pokrenuti (zameniti sa Vašim e-mail-om i username-om):  
+**git config --global user.email "email@example.com"   
+git config --global user.name "username"**
+- **git commit -m "Inicijalni commit"** - komituje u lokalni repozitorijum sa odgovarajućim komentarom
+- **git remote add origin https://github.com/rva2019/ITXX-XXXX-Prezime-Ime** - dodaje putanju do GitHub repozitorijuma (zameniti url sa url-om vašeg repozitorijuma)
+- **git pull origin master --allow-unrelated-histories** - sinhronizuje repozitorijum (zbog backend-a koji se nalazi u istom repozitorijumu)
+- **git push origin master** - "šalje" u GitHub repozitorijum (uneti username i password za GitHub ukoliko zatraži)

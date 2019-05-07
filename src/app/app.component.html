@@ -1,5 +1,50 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="over" [fixedInViewport]="true" opened mode="side">
+    <mat-accordion>
+      <a mat-button style="text-align: center">
+        <mat-icon>Home</mat-icon>
+      </a>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Aplikacija
+          </mat-panel-title>
+          <mat-panel-description>
+            Aplikacija za vodjenje evidencije
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-button>Artikl</a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-button>Dobavljač</a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-button>Porudžbina</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Informacije
+          </mat-panel-title>
+          <mat-panel-description>
+            Osnovne informacije o aplikaciji
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-button>About</a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-button>Author</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-sidenav>
+</mat-sidenav-container>
+
+<!-- <div style="text-align:center">
   <h1>
     Hi, this is {{ title }}!
   </h1>
@@ -8,7 +53,7 @@
 <h2>Here are some links to help you start: </h2>
 <ul>
   <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
+    <h2><a mat-button target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
   </li>
   <li>
     <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
@@ -17,5 +62,5 @@
     <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
   </li>
 </ul>
-<app-vozilo></app-vozilo>
+<app-vozilo></app-vozilo> -->
 
