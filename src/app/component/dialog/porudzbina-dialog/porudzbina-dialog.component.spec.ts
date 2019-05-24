@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PorudzbinaComponent } from './porudzbina.component';
+import { PorudzbinaDialogComponent } from './porudzbina-dialog.component';
 
-describe('PorudzbinaComponent', () => {
-  let component: PorudzbinaComponent;
-  let fixture: ComponentFixture<PorudzbinaComponent>;
+describe('PorudzbinaDialogComponent', () => {
+  let component: PorudzbinaDialogComponent;
+  let fixture: ComponentFixture<PorudzbinaDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PorudzbinaComponent ]
+      declarations: [ PorudzbinaDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PorudzbinaComponent);
+    fixture = TestBed.createComponent(PorudzbinaDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
