@@ -7,6 +7,7 @@ import { Artikl } from '../model/artikl.model';
 export class ArtiklService {
 
  private readonly API_URL = 'http://localhost:8083/artikl/';
+ private readonly API_URL_P = 'http://localhost:8083/stavkaZaPorudzbinu/';
 
  dataChange: BehaviorSubject<Artikl[]> = new BehaviorSubject<Artikl[]>([]);
 
