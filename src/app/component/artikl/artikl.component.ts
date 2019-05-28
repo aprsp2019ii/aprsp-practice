@@ -1,10 +1,10 @@
 import { ArtiklDialogComponent } from './../dialog/artikl-dialog/artikl-dialog.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Artikl } from 'src/app/model/artikl.model';
 import { HttpClient } from '@angular/common/http';
 import { ArtiklService } from 'src/app/service/artikl.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 
 @Component({
   selector: 'app-artikl',
@@ -14,13 +14,16 @@ import { MatDialog } from '@angular/material';
 export class ArtiklComponent implements OnInit {
 
 displayedColumns = ['id', 'naziv', 'proizvodjac', 'actions'];
- dataSource: Observable<Artikl[]>;
- index: number;
- id: number;
+// dataSource: Observable<Artikl[]>;
 
- constructor(public httpClient: HttpClient, public artiklService: ArtiklService, public dialog: MatDialog) {}
+dataSource: MatTableDataSource<Artikl>;
 
- public openDialog(flag: number, id: number, naziv: string, proizvodjac: string) {
+@ViewChild(MatPaginator) paginator: MatPaginator;
+@ViewChild(MatSort) sort: MatSort;
+
+constructor(public httpClient: HttpClient, public artiklService: ArtiklService, public dialog: MatDialog) {}
+
+public openDialog(flag: number, id: number, naziv: string, proizvodjac: string) {
   const dialogRef = this.dialog.open(ArtiklDialogComponent, { data: { id: id, naziv: naziv, proizvodjac: proizvodjac } });
   dialogRef.componentInstance.flag = flag;
   dialogRef.afterClosed().subscribe(result => {
@@ -30,12 +33,30 @@ displayedColumns = ['id', 'naziv', 'proizvodjac', 'actions'];
   });
 }
 
-  ngOnInit() {
-    this.loadData();
-  }
+ngOnInit() {
+  this.loadData();
+}
 
-  public loadData() {
-    this.dataSource = this.artiklService.getAllArtikl();
-  }
+public loadData() {
+  this.artiklService.getAllArtikl().subscribe(data =>{
+    this.dataSource = new MatTableDataSource(data);
+    //ignoriši mala/velika slova pri sortiranju ali za id nemoj da prebacuješ u mala slova
+    this.dataSource.sortingDataAccessor = (data, property) => {
+      switch (property) {
+        case 'id': return data[property];
+        default: return data[property].toLocaleLowerCase();
+      }
+    };
+
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  });
+}
+
+applyFilter(filterValue: string) {
+  filterValue = filterValue.trim(); // Remove whitespace
+  filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+  this.dataSource.filter = filterValue;
+}
 
 }

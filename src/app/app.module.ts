@@ -1,4 +1,6 @@
-import { AutomobilComponent } from './../../../rpp-practice/src/app/priprema/automobil/automobil.component';
+import { AutomobilComponent } from './priprema/automobil/automobil.component';
+import { StavkaPorudzbineComponent } from './component/stavka-porudzbine/stavka-porudzbine.component';
+import { StavkaPorudzbineService } from './service/stavka-porudzbine.service';
 import { AuthorComponent } from './core/author/author.component';
 import { AboutComponent } from './core/about/about.component';
 import { HomeComponent } from './core/home/home.component';
@@ -6,7 +8,7 @@ import { DobavljacService } from './service/dobavljac.service';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule, MatIconModule, MatSidenavModule, MatListModule, MatGridListModule,
   MatExpansionModule, MatTableModule, MatToolbarModule, MatSelectModule, MatOptionModule, MatNativeDateModule,
-  MatDatepickerModule, MatSnackBarModule, MatDialogModule, MatInputModule, MatCheckboxModule } from '@angular/material';
+  MatDatepickerModule, MatSnackBarModule, MatDialogModule, MatInputModule, MatCheckboxModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -15,7 +17,6 @@ import { AppComponent } from './app.component';
 import { ArtiklComponent } from './component/artikl/artikl.component';
 import { DobavljacComponent } from './component/dobavljac/dobavljac.component';
 import { PorudzbinaComponent } from './component/porudzbina/porudzbina.component';
-import { StavkaPorudzbineComponent } from './component/stavka-porudzbine/stavka-porudzbine.component';
 import { RouterModule, Routes} from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ArtiklService } from './service/artikl.service';
@@ -24,6 +25,7 @@ import { DobavljacDialogComponent } from './component/dialog/dobavljac-dialog/do
 import { PorudzbinaDialogComponent } from './component/dialog/porudzbina-dialog/porudzbina-dialog.component';
 import { PorudzbinaService } from './service/porudzbina.service';
 import { VoziloComponent } from './priprema/vozilo/vozilo.component';
+import { StavkaPorudzbineDialogComponent } from './component/dialog/stavka-porudzbine-dialog/stavka-porudzbine-dialog.component';
 
 const Routes = [{path: 'artikl', component: ArtiklComponent},
                 {path: 'dobavljac', component: DobavljacComponent},
@@ -48,7 +50,8 @@ const Routes = [{path: 'artikl', component: ArtiklComponent},
     HomeComponent,
     ArtiklDialogComponent,
     DobavljacDialogComponent,
-    PorudzbinaDialogComponent
+    PorudzbinaDialogComponent,
+    StavkaPorudzbineDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -72,16 +75,19 @@ const Routes = [{path: 'artikl', component: ArtiklComponent},
     MatDialogModule,
     MatInputModule,
     FormsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
 
   entryComponents: [
     ArtiklDialogComponent,
     DobavljacDialogComponent,
-    PorudzbinaDialogComponent
+    PorudzbinaDialogComponent,
+    StavkaPorudzbineDialogComponent
   ],
 
-  providers: [ArtiklService, DobavljacService, PorudzbinaService],
+  providers: [ArtiklService, DobavljacService, PorudzbinaService, StavkaPorudzbineService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

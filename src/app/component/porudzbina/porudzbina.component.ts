@@ -14,6 +14,8 @@ import { Porudzbina } from 'src/app/model/porudzbina.model';
 export class PorudzbinaComponent implements OnInit {
   displayedColumns = ['id', 'datum', 'isporuceno', 'iznos', 'placeno', 'dobavljac', 'actions'];
 
+  selektovanaPorudzbina: Porudzbina;
+
   dataSource: Observable<Porudzbina[]>;
 
   constructor(public porudzbinaService: PorudzbinaService, public dialog: MatDialog) { }
@@ -21,6 +23,10 @@ export class PorudzbinaComponent implements OnInit {
   ngOnInit() {
     this.loadData();
   }
+
+  public selectRow(row) {
+    this.selektovanaPorudzbina = row;
+}
 
   public loadData() {
     this.dataSource = this.porudzbinaService.getAllPorudzbina();
