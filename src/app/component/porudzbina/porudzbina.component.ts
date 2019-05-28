@@ -1,4 +1,10 @@
+import { Dobavljac } from '../../model/dobavljac.model';
+import { PorudzbinaDialogComponent } from './../dialog/porudzbina-dialog/porudzbina-dialog.component';
+import { MatDialog } from '@angular/material';
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
+import { Porudzbina } from 'src/app/model/porudzbina.model';
+import { PorudzbinaService } from 'src/app/service/porudzbina.service';
 
 @Component({
   selector: 'app-porudzbina',
@@ -6,12 +12,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./porudzbina.component.css']
 })
 export class PorudzbinaComponent implements OnInit {
+  displayedColumns = ['id', 'datum', 'isporuceno', 'iznos', 'placeno', 'dobavljac', 'actions'];
 
-<<<<<<< HEAD
-  constructor() { }
-
-  ngOnInit() {
-=======
   selektovanaPorudzbina: Porudzbina;
 
   dataSource: Observable<Porudzbina[]>;
@@ -22,12 +24,12 @@ export class PorudzbinaComponent implements OnInit {
     this.loadData();
   }
 
-  public selectRow(row) {
-    this.selektovanaPorudzbina = row;
-}
-
   public loadData() {
     this.dataSource = this.porudzbinaService.getAllPorudzbina();
+  }
+
+  public selectRow(row) {
+    this.selektovanaPorudzbina = row;
   }
 
   public openDialog(flag: number, id: number, datum: Date, isporuceno: Date, placeno: boolean, iznos: number, dobavljac: Dobavljac ) {
@@ -41,7 +43,6 @@ export class PorudzbinaComponent implements OnInit {
         this.loadData();
       }
     });
->>>>>>> newbranch
   }
 
 }

@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-<p>
-  porudzbina works!
-</p>
-=======
 <mat-toolbar color="primary">
     <span class="title-center">Porudžbina</span>
    </mat-toolbar>
@@ -58,11 +53,10 @@
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row style="cursor: pointer" *matRowDef="let row; columns: displayedColumns;" (click)="selectRow(row)" 
+      <mat-row style="cursor: pointer" *matRowDef="let row; columns: displayedColumns;" (click)="selectRow(row)"
       [ngClass]="{'selectRow': selektovanaPorudzbina != null && selektovanaPorudzbina.id == row.id}"></mat-row>
     </mat-table>
    </div>
    <div class="container mat-elevation z8">
     <app-stavka-porudzbine *ngIf="selektovanaPorudzbina" [selektovanaPorudzbina]="selektovanaPorudzbina"></app-stavka-porudzbine>
   </div>
->>>>>>> newbranch

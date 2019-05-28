@@ -1,17 +1,10 @@
-<<<<<<< HEAD
-import { Component, OnInit } from '@angular/core';
-=======
 import { ArtiklDialogComponent } from './../dialog/artikl-dialog/artikl-dialog.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
->>>>>>> newbranch
 import { Observable } from 'rxjs';
 import { Artikl } from 'src/app/model/artikl.model';
 import { HttpClient } from '@angular/common/http';
 import { ArtiklService } from 'src/app/service/artikl.service';
-<<<<<<< HEAD
-=======
 import { MatDialog, MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
->>>>>>> newbranch
 
 @Component({
   selector: 'app-artikl',
@@ -23,9 +16,6 @@ export class ArtiklComponent implements OnInit {
 displayedColumns = ['id', 'naziv', 'proizvodjac', 'actions'];
 // dataSource: Observable<Artikl[]>;
 
-<<<<<<< HEAD
- constructor(public httpClient: HttpClient, public artiklService: ArtiklService) {
-=======
 dataSource: MatTableDataSource<Artikl>;
 
 @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -41,7 +31,6 @@ public openDialog(flag: number, id: number, naziv: string, proizvodjac: string) 
       this.loadData();
     }
   });
->>>>>>> newbranch
 }
 
 ngOnInit() {
